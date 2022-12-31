@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.app }}
+  name: {{ .Values.app }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app }}
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: "{{ .Values.image }}:{{ .Values.version }}"
+          imagePullPolicy: Always
+          name: {{ .Values.app }}
+          ports:
+            - containerPort: 8080
+          env:
+            - name: TELEGRAM_WEBAPP_URL
+              valueFrom:
+                secretKeyRef:
+                  name: environment
+                  key: TELEGRAM_WEBAPP_URL
+                  optional: false
+            - name: TELEGRAM_BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: environment
+                  key: TELEGRAM_BOT_TOKEN
+                  optional: false
+            - name: TELEGRAM_BOT_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: environment
+                  key: TELEGRAM_BOT_NAME
+                  optional: false
+            - name: VCS_REF
+              value: {{ .Values.version }}
+          livenessProbe:
+            # failureThreshold: 10
+            initialDelaySeconds: 90
+            periodSeconds: 15
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              scheme: HTTP
+          readinessProbe:
+            # failureThreshold: 10
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 12
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              scheme: HTTP

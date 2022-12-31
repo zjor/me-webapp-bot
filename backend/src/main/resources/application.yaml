@@ -1,0 +1,26 @@
+VCS_REF:
+
+#spring:
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/me-webapp-bot
+#    username: me-webapp-bot
+#    password: s3cr3t
+#
+#  jpa:
+#    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate:
+#      ddl-auto: update
+#      format_sql: false
+#    show-sql: false
+
+server:
+  error:
+    include-stacktrace: on_param
+
+telegram:
+  webApp:
+    url: https://idiotic-spoon-123.surge.sh/
+  bot:
+    token: 1210082003:AAG30Mv9s4BDw6a5Zs_AcG26r1LsHfJrQc4
+    name: MeWebAppBot

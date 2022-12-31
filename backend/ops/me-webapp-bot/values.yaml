@@ -1,0 +1,6 @@
+replicaCount: 1
+
+app: me-webapp-bot
+image: zjor/me-webapp-bot
+version:
+

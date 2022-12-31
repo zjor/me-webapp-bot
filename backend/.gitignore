@@ -1,0 +1,12 @@
+.idea
+target/
+
+_Sandbox.java
+
+*.iml
+
+.tmp.json
+.tmp.txt
+.env
+
+MeWebAppBot
