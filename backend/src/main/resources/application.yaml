@@ -22,5 +22,5 @@ telegram:
   webApp:
     url: https://idiotic-spoon-123.surge.sh/
   bot:
-    token: 1210082003:AAG30Mv9s4BDw6a5Zs_AcG26r1LsHfJrQc4
+    token: 
     name: MeWebAppBot
