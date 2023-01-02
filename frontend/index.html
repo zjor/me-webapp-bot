@@ -1,122 +1,14 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <style>
-    
-    html, body, div {
-      margin: 0;
-      padding: 0;
-      font-family: verdana;
-    }
-
-    #root {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background-color: white;
-      padding-bottom: 48px;
-    }
-
-    #profile-image-container {
-      margin-top: 16px;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-
-    #profile-image-container img {
-      max-width: 240px;
-      border-radius: 16px;
-    }
-
-    .row {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 8px 48px;
-    }
-
-    .row div {
-      flex: 1 1 0px;
-    }
-
-    .row:nth-child(odd) {
-      background-color: lightcyan;
-    }
-
-    .row .key {
-      font-weight: bold;
-      text-align: right;
-      padding-right: 24px;
-    }
-
-    .row .value {
-      text-align: left;
-      padding-left: 24px;
-    }
-
-  </style>
-</head>
-<body>
-  <div id="root">
-    <div id="profile-image-container">
-      <img src="https://res.cloudinary.com/zjor-storage/image/upload/v1672352443/profile_ahrp6f.svg" id="profile-image">
-    </div>
-    <div class="row">
-      <div class="key">
-        User ID
-      </div>
-      <div class="value" id="user-id">12345678</div>
-    </div>
-
-    <div class="row">
-      <div class="key">
-        Username
-      </div>
-      <div class="value" id="username">alice_brown</div>
-    </div>
-
-    <div class="row">
-      <div class="key">
-        First name
-      </div>
-      <div class="value" id="first-name">Alice</div>
-    </div>
-
-
-    <div class="row">
-      <div class="key">
-        Last name
-      </div>
-      <div class="value" id="last-name">Brown</div>
-    </div>
-
-  </div>
-  <script>    
-    const webApp = window.Telegram.WebApp
-    const mainButton = window.Telegram.WebApp.MainButton
-    const userInfo = window.Telegram.WebApp.initDataUnsafe
-    const { user } = userInfo
-
-    const userIdDiv = document.querySelector('#user-id')
-    const userNameDiv = document.querySelector('#username')
-    const firstNameDiv = document.querySelector('#first-name')
-    const lastNameDiv = document.querySelector('#last-name')
-    const profileImg = document.querySelector('#profile-image')
-
-    userIdDiv.innerText = user.id
-    userNameDiv.innerText = user.username
-    firstNameDiv.innerText = user.first_name
-    lastNameDiv.innerText = user.last_name
-
-    profileImg.src = `https://me-webapp-bot.projects.royz.cc/api/profile/photo/${user.id}`
-
-    mainButton.setText('Close')
-    mainButton.onClick(() => {
-      webApp.close()
-    })
-    mainButton.enable()
-    mainButton.show()
-  </script>
-</body>
+<html lang="en">
+  <head>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MeWebAppBot</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
